@@ -1,0 +1,15 @@
+server:
+  port: 8081
+
+spring:
+  datasource-snippet:
+    url: jdbc:mysql://localhost:3306/snippet
+    username: insapi
+    password: insapi
+    driver-class-name: com.mysql.jdbc.Driver
+    jpa:
+      show-sql: false
+      hibernate:
+        ddl-auto: update
+        dialect: org.hibernate.dialect.MySQL5Dialect
+        current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext
