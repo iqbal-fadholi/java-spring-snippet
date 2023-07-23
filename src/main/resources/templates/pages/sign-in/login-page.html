@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Signin Template · Bootstrap v5.1</title>
+
+    <!-- <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sign-in/"> -->
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/custom/signin.css}" rel="stylesheet">
+  </head>
+  <body class="text-center">
+    
+<main class="form-signin">
+  <form action="#" th:action="@{/authenticateTheUser}" method="POST">
+    <img class="mb-4" th:src="@{/images/Bank_Syariah_Indonesia.svg}" alt="" width="100%" height="100%">
+    <div class="form-floating">
+      <input type="text" name="username" class="form-control" id="floatingInput" placeholder="Username">
+      <label for="floatingInput">Username</label>
+    </div>
+    <div class="form-floating">
+      <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+      <label for="floatingPassword">Password</label>
+    </div>
+
+    <!-- Place for messages: error, alert etc ... -->
+    <div class="form-group">
+      <div class="col-xs-15">
+          <div>
+
+              <!-- Check for login error -->
+
+              <div th:if="${param.error}">
+
+                  <div class="alert alert-danger col-xs-offset-1 col-xs-10">
+                      Invalid username and password.
+                  </div>
+
+              </div>
+
+              <!-- Check for logout -->
+
+              <div th:if="${param.logout}">
+
+                  <div class="alert alert-success col-xs-offset-1 col-xs-10">
+                      You have been logged out.
+                  </div>
+
+              </div>
+
+          </div>
+      </div>
+  </div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2023</p>
+  </form>
+</main>
+
+
+    
+  </body>
+</html>

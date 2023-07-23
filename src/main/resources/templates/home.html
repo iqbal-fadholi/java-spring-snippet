@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Spring Thymeleaf with security</title>
+  </head>
+  <body>
+    <h1>Welcome to Spring Thymeleaf with security</h1>
+    <p>
+      User: <span sec:authentication="principal.username"></span> <br /><br />
+      Role(s): <span sec:authentication="principal.authorities"></span>
+    </p>
+    <hr />
+    <div sec:authorize="hasRole('ADMIN')">
+      <p>
+        <a th:href="@{/adminPage}">Link for admin</a>
+        (Only for who has admin role)
+      </p>
+    </div>
+    <div sec:authorize="hasRole('USER')">
+      <p>
+        <a th:href="@{/userPage}">Link for user</a>
+        (Only for who has user role)
+      </p>
+    </div>
+
+    <hr />
+    <form action="#" th:action="@{/logout}" method="POST">
+      <input type="submit" value="Logout" />
+    </form>
+  </body>
+</html>
