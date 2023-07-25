@@ -4,12 +4,12 @@ server:
 spring:
   datasource-snippet:
     url: jdbc:mysql://localhost:3306/snippet
-    username: insapi
-    password: insapi
+    username: iqbal
+    password: iqbal
     driver-class-name: com.mysql.jdbc.Driver
     jpa:
-      show-sql: false
+      show-sql: true
       hibernate:
-        ddl-auto: update
+        ddl-auto: none
         dialect: org.hibernate.dialect.MySQL5Dialect
         current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext

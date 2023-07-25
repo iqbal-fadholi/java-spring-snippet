@@ -18,7 +18,7 @@ import java.util.Properties;
 @RequiredArgsConstructor
 @Configuration
 @EnableAutoConfiguration
-@EnableJpaRepositories(basePackages = "co.id.bankbsi.middlewaresnippet.repository.database.jparepository", entityManagerFactoryRef = "snippetEMF", transactionManagerRef = "snippetTMR")
+@EnableJpaRepositories(basePackages = "co.id.bankbsi.middlewaresnippet.security.dao", entityManagerFactoryRef = "snippetEMF", transactionManagerRef = "snippetTMR")
 public class DbConfig {
 
     final Environment env;
@@ -47,7 +47,7 @@ public class DbConfig {
             {
                 setJpaProperties(jpaProperties);
                 setDataSource(snippetHikari());
-                setPackagesToScan("co.id.bankbsi.middlewaresnippet.repository.database.entity");
+                setPackagesToScan("co.id.bankbsi.middlewaresnippet.security.entity");
                 setJpaVendorAdapter(new HibernateJpaVendorAdapter());
             }
         };
