@@ -4,16 +4,19 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.provisioning.JdbcUserDetailsManager;
-import org.springframework.security.provisioning.UserDetailsManager;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+
+import co.id.bankbsi.middlewaresnippet.security.service.UserService;
 
 @Configuration
 public class SecurityConfiguration {
 
         @Bean
-        public PasswordEncoder passwordEncoder() {
-                return NoOpPasswordEncoder.getInstance();
+        public BCryptPasswordEncoder passwordEncoder() {
+                return new BCryptPasswordEncoder();
         }
 
         @Bean
@@ -28,7 +31,8 @@ public class SecurityConfiguration {
         public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
                 http
                                 .authorizeHttpRequests(configurer -> configurer
-                                                .antMatchers("/css/**", "/js/**", "/images/**").permitAll()
+                                                .antMatchers("/css/**", "/js/**", "/images/**", "/custom/**")
+                                                .permitAll()
                                                 .anyRequest().authenticated())
                                 .formLogin(form -> form
                                                 .loginPage("/showMyLoginPage")
